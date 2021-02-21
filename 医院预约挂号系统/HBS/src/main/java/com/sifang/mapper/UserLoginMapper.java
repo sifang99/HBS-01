@@ -10,4 +10,6 @@ import java.util.List;
 @Repository
 public interface UserLoginMapper {
     List<UserLogin> getAllUser();
+    UserLogin getUserByNickname(String nickname);
+    UserLogin getUserByTel(String tel);
 }
