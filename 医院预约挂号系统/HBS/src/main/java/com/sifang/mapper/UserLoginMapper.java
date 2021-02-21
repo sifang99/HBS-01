@@ -12,4 +12,5 @@ public interface UserLoginMapper {
     List<UserLogin> getAllUser();
     UserLogin getUserByNickname(String nickname);
     UserLogin getUserByTel(String tel);
+    boolean addUser(String tel, String nickname, String pwd);
 }

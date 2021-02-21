@@ -14,4 +14,8 @@
         select *from user_login where tel = #{tel}
     </select>
 
+    <insert id="addUser" parameterType="String">
+        insert into user_login (tel, nickname, pwd) values (#{tel},#{nickname},#{pwd})
+    </insert>
+
 </mapper>

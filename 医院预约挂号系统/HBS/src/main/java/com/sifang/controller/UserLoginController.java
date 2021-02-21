@@ -40,4 +40,9 @@ public class UserLoginController {
         returnMessage.setIsSuccess(result);
         return returnMessage;
     }
+
+    @RequestMapping("/userRegister")
+    public ReturnMessage register(String nickname, String tel, String pwd){
+        return userService.register(nickname, tel, pwd);
+    };
 }
