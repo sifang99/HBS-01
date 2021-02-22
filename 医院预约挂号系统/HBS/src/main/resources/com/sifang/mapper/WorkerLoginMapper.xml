@@ -6,4 +6,8 @@
         insert into worker_login(num,pwd) values (#{num},#{pwd})
     </insert>
 
+    <update id="updatePwd" parameterType="String">
+        update worker_login set pwd = #{pwd} where num = #{num}
+    </update>
+
 </mapper>

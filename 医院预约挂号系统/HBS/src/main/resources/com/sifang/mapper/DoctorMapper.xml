@@ -7,4 +7,8 @@
                values (#{num},#{name},#{gender},#{tel},#{dept},#{birth},#{position},#{speciality},#{introduction})
     </insert>
 
+    <select id="isNumExist" parameterType="String" resultType="Doctor">
+        select * from doctor where num = #{num}
+    </select>
+
 </mapper>

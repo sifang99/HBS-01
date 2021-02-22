@@ -5,4 +5,5 @@ import com.sifang.pojo.WorkerLogin;
 
 public interface WorkerService {
     ReturnMessage addWorker(WorkerLogin workerLogin);
+    ReturnMessage updatePwd(String num, String pwd);
 }

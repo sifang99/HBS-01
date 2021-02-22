@@ -26,4 +26,17 @@ public class WorkerServiceImpl implements WorkerService {
         }
         return returnMessage;
     }
+
+    @Override
+    public ReturnMessage updatePwd(String num, String pwd) {
+        ReturnMessage returnMessage = new ReturnMessage();
+        if (workerLoginMapper.updatePwd(num, pwd) >= 1){
+            returnMessage.setIsSuccess(0);
+            returnMessage.setMessage("修改成功");
+        }else{
+            returnMessage.setIsSuccess(1);
+            returnMessage.setMessage("修改失败");
+        }
+        return returnMessage;
+    }
 }

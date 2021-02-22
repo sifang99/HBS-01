@@ -6,6 +6,7 @@ import com.sifang.pojo.Doctor;
 import com.sifang.pojo.ReturnMessage;
 import com.sifang.pojo.WorkerLogin;
 import com.sifang.service.DoctorService;
+import com.sifang.service.WorkerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,30 +15,35 @@ public class DoctorServiceImpl implements DoctorService {
 
     @Autowired
     private DoctorMapper doctorMapper;
-    @Autowired
-    private WorkerLoginMapper workerLoginMapper;
 
     @Override
     public ReturnMessage addDoctor(Doctor doctor) {
         ReturnMessage returnMessage = new ReturnMessage();
-        WorkerLogin workerLogin = new WorkerLogin();
         //添加医生
-        //添加医生时自动为医生注册登录账号
+        //判断医生编号是否唯一
+        if (this.isNumExist(doctor.getNum())){
+            returnMessage.setMessage("改编号已注册！");
+            returnMessage.setIsSuccess(1);
+            return returnMessage;
+        }
+        //如果改编号尚未注册，添加医生
         if (doctorMapper.addDoctor(doctor) >= 1){
-            workerLogin.setNum(doctor.getNum());
-            workerLogin.setPwd(doctor.getNum());
-            if (workerLoginMapper.addWorker(workerLogin) >= 1){
-                returnMessage.setIsSuccess(0);
-                returnMessage.setMessage("添加成功！");
-            }else{
-                returnMessage.setIsSuccess(1);
-                returnMessage.setMessage("添加医生登录账号失败！");
-            }
-
+            returnMessage.setIsSuccess(0);
+            returnMessage.setMessage("添加医生成功！");
         }else{
             returnMessage.setIsSuccess(1);
             returnMessage.setMessage("添加医生失败！");
         }
         return returnMessage;
     }
+
+    @Override
+    public boolean isNumExist(String num) {
+        if (doctorMapper.isNumExist(num) != null){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
 }
