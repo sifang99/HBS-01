@@ -18,4 +18,12 @@
         insert into user_login (tel, nickname, pwd) values (#{tel},#{nickname},#{pwd})
     </insert>
 
+    <update id="updatePwdByTel" parameterType="String">
+        update user_login set pwd = #{pwd} where tel = #{tel}
+    </update>
+
+    <update id="updatePwdByNickname" parameterType="String">
+        update user_login set pwd = #{pwd} where nickname = #{nickname}
+    </update>
+
 </mapper>

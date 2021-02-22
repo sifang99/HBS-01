@@ -13,7 +13,7 @@ public interface UserService {
     //根据电话号码查询用户
     UserLogin getUserByTel(String tel);
     //用户登录
-    int userLogin(String account, String pwd);
+    ReturnMessage userLogin(String account, String pwd);
     //检查nickname是否符合规范
     boolean checkNickname(String nickname);
     //检查tel是否符合规范
@@ -26,4 +26,8 @@ public interface UserService {
     boolean isTelExist(String tel);
     //用户注册账号
     ReturnMessage register(String nickname, String tel, String pwd);
+    //判断账号是否为昵称
+    int isNickname(String account);
+    //用户修改密码
+    ReturnMessage updatePwd(String account, String oldPwd, String newPwd);
 }

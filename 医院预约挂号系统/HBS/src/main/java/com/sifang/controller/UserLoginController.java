@@ -1,13 +1,10 @@
 package com.sifang.controller;
 
-import com.sifang.mapper.UserLoginMapper;
 import com.sifang.pojo.ReturnMessage;
 import com.sifang.pojo.UserLogin;
 import com.sifang.service.UserService;
-import com.sifang.service.impl.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -24,25 +21,21 @@ public class UserLoginController {
         return userService.getUserList();
     }
 
+    //用户登录
     @RequestMapping("/userLogin")
     public ReturnMessage login(String account, String pwd){
-        int result = userService.userLogin(account, pwd);
-        returnMessage = new ReturnMessage();
-        if(result == 0){
-            returnMessage.setMessage("登录成功！");
-        }else if(result == 1){
-            returnMessage.setMessage("账号不存在！");
-        }else if(result == 2){
-            returnMessage.setMessage("密码错误！");
-        }else{
-            returnMessage.setMessage("登录失败！");
-        }
-        returnMessage.setIsSuccess(result);
-        return returnMessage;
+        return userService.userLogin(account, pwd);
     }
 
+    //用户注册
     @RequestMapping("/userRegister")
     public ReturnMessage register(String nickname, String tel, String pwd){
         return userService.register(nickname, tel, pwd);
     };
+
+    //用户修改密码
+    @RequestMapping("/userUpdatePwd")
+    public ReturnMessage updatePwd(String account, String oldPwd, String newPwd){
+        return userService.updatePwd(account, oldPwd, newPwd);
+    }
 }
