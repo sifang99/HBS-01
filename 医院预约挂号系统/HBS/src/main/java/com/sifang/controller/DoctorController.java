@@ -14,9 +14,9 @@ import org.springframework.web.bind.annotation.*;
 public class DoctorController {
 
     @Autowired
-    DoctorService doctorService;
+    private DoctorService doctorService;
     @Autowired
-    WorkerService workerService;
+    private WorkerService workerService;
 
     //添加医生
     @PostMapping("/addDoctor")
