@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sifang.mapper.DoctorMapper">
+
+    <insert id="addDoctor" parameterType="Doctor">
+        insert into doctor(num, name,gender,tel,dept,birth,position,speciality,introduction)
+               values (#{num},#{name},#{gender},#{tel},#{dept},#{birth},#{position},#{speciality},#{introduction})
+    </insert>
+
+</mapper>
