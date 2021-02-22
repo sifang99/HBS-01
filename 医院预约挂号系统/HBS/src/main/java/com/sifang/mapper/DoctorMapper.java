@@ -9,4 +9,6 @@ import org.springframework.stereotype.Repository;
 public interface DoctorMapper {
     int addDoctor(Doctor doctor);
     Doctor isNumExist(String num);
+    int updateDoctor(Doctor doctor);
+    int deleteDoctor(int id);
 }

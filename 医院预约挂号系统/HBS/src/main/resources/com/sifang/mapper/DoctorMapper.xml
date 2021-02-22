@@ -11,4 +11,14 @@
         select * from doctor where num = #{num}
     </select>
 
+    <update id="updateDoctor" parameterType="Doctor">
+        update doctor set num = #{num}, name = #{name}, gender = #{gender}, tel = #{tel},
+                dept = #{dept}, birth = #{birth}, position = #{position},speciality = #{speciality},
+                introduction = #{introduction} where id = #{id}
+    </update>
+
+    <delete id="deleteDoctor" parameterType="int">
+        delete from doctor where id = #{id}
+    </delete>
+
 </mapper>

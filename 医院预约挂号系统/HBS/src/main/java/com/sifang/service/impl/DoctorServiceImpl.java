@@ -46,4 +46,30 @@ public class DoctorServiceImpl implements DoctorService {
         }
     }
 
+    @Override
+    public ReturnMessage updateDoctor(Doctor doctor) {
+        ReturnMessage returnMessage = new ReturnMessage();
+        if (doctorMapper.updateDoctor(doctor) >= 1){
+            returnMessage.setIsSuccess(0);
+            returnMessage.setMessage("修改成功！");
+        }else{
+            returnMessage.setIsSuccess(1);
+            returnMessage.setMessage("修改失败！");
+        }
+        return returnMessage;
+    }
+
+    @Override
+    public ReturnMessage deleteDoctorById(int id) {
+        ReturnMessage returnMessage = new ReturnMessage();
+        if (doctorMapper.deleteDoctor(id) >= 1){
+            returnMessage.setIsSuccess(0);
+            returnMessage.setMessage("删除成功！");
+        }else{
+            returnMessage.setIsSuccess(1);
+            returnMessage.setMessage("删除失败！");
+        }
+        return returnMessage;
+    }
+
 }

@@ -45,4 +45,16 @@ public class DoctorController {
         return workerService.updatePwd(num, pwd);
     }
 
+    //修改医生信息
+    @RequestMapping("/updateDoctor")
+    public ReturnMessage updateDoctor(@RequestBody Doctor doctor){
+        return doctorService.updateDoctor(doctor);
+    }
+
+    //删除医生
+    @RequestMapping("/deleteDoctor")
+    public ReturnMessage deleteDoctor(int id){
+        return doctorService.deleteDoctorById(id);
+    }
+
 }
