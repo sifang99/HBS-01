@@ -17,4 +17,5 @@ public class PatientMessage {
     private int gender;
     private Date birth;
     private String address;
+    private int userId;
 }

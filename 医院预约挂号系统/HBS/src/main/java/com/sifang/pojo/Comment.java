@@ -15,4 +15,5 @@ public class Comment {
     private Date date;
     private int role;
     private String comment;
+    private String doctorNum;
 }

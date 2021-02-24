@@ -3,13 +3,13 @@
 <mapper namespace="com.sifang.mapper.PatientMessageMapper">
 
     <insert id="addPatient" parameterType="PatientMessage">
-        insert into patient_message(account, name,tel, gender,birth,address)
-            values (#{account},#{name},#{tel},#{gender},#{birth},#{address})
+        insert into patient_message(account, name,tel, gender,birth,address,user_id)
+            values (#{account},#{name},#{tel},#{gender},#{birth},#{address},#{userId})
     </insert>
 
     <update id="updatePatient" parameterType="PatientMessage">
         update patient_message set account = #{account},name  = #{name},tel = #{tel},gender = #{gender},
-            birth = #{birth},address = #{address} where id = #{id}
+            birth = #{birth},address = #{address},user_id=#{userId} where id = #{id}
     </update>
 
     <delete id="deletePatientByAccount" parameterType="String">
